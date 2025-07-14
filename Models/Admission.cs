@@ -11,5 +11,8 @@
         public int AdmissionBookId { get; set; }
 
         public int AdmissionWarehouseId { get; set; }
+
+        public Book Book { get; set; }
+        public Warehouse Warehouse { get; set; }
     }
 }

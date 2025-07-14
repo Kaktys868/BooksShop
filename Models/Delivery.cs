@@ -7,5 +7,8 @@
         public DateOnly DeliveryDate { get; set; }
         public int DeliveryBookId { get; set; }
         public int DeliveryWarehouseId { get; set; }
+
+        public Book Book { get; set; }
+        public Warehouse Warehouse { get; set; }
     }
 }

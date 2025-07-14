@@ -9,5 +9,8 @@
         public bool OrderBool { get; set; }
         public int OrderBookId { get; set; }
         public int OrderUserId { get; set; }
+
+        public User User { get; set; }
+        public Book Book { get; set; }
     }
 }

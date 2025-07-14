@@ -9,12 +9,16 @@ namespace BooksShop.Models
         public string UserPassword { get; set; }
         public string UserFIO { get; set; }
         public string UserPhoneNumber { get; set; }
-        public ICollection<UserRole> UserRoles { get; set; }
+
+        public ICollection<UserRole> UserRoles { get; set; } 
+            = new List<UserRole>();
         public ICollection<WishlistUser> WishlistUsers { get; set; }
-        public User()
-        {
-            UserRoles = new List<UserRole>();
-            WishlistUsers = new List<WishlistUser>();
-        }
+            = new List<WishlistUser>();
+        public ICollection<Review> Reviews { get; set; }
+            = new List<Review>();
+        public ICollection<Cart> Carts { get; set; }
+            = new List<Cart>();
+        public ICollection<Order> Orders { get; set; }
+            = new List<Order>();
     }
 }

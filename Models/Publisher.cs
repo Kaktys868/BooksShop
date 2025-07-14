@@ -6,5 +6,8 @@
         public string PublisherName { get; set; }
         public string PublisherAddress { get; set; }
         public string PublisherPhoneNumber { get; set; }
+
+        public ICollection<Book> Books { get; set; }
+            = new List<Book>();
     }
 }

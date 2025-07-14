@@ -8,5 +8,8 @@
         public DateOnly ReviewDate { get; set; }
         public int ReviewBookId { get; set; }
         public int ReviewUserId { get; set; }
+
+        public User User { get; set; }
+        public Book Book { get; set; }
     }
 }
