@@ -10,28 +10,28 @@ namespace BooksShop.Classes.Common
         public DbConnect(DbContextOptions<DbConnect> options) 
             : base(options) { }
 
-        public DbSet<Admission> Admissions { get; set; }
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<AuthorBook> AuthorBooks { get; set; }
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Cart> Carts { get; set; }
-        public DbSet<CartBook> CartBooks { get; set; }
-        public DbSet<City> Cities { get; set; }
-        public DbSet<Delivery> Deliveries { get; set; }
-        public DbSet<Genre> Genres { get; set; }
-        public DbSet<GenreBook> GenreBooks { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Publisher> Publishers { get; set; }
-        public DbSet<Review> Reviews { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<Series> Seriess { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserRole> UsersRoles { get; set; }
-        public DbSet<Warehouse> Warehouses { get; set; }
-        public DbSet<WarehouseBook> WarehouseBooks { get; set; }
-        public DbSet<Wishlist> Wishlists { get; set; }
-        public DbSet<WishlistUser> WishlistUsers { get; set; }
-        public DbSet<WishlistBook> WishlistBooks { get; set; }
+        public DbSet<Admission> Admission { get; set; }
+        public DbSet<Author> Author { get; set; }
+        public DbSet<AuthorBook> AuthorBook { get; set; }
+        public DbSet<Book> Book { get; set; }
+        public DbSet<Cart> Cart { get; set; }
+        public DbSet<CartBook> CartBook { get; set; }
+        public DbSet<City> City { get; set; }
+        public DbSet<Delivery> Delivery { get; set; }
+        public DbSet<Genre> Genre { get; set; }
+        public DbSet<GenreBook> GenreBook { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Publisher> Publisher { get; set; }
+        public DbSet<Review> Review { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<Series> Series { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<UserRole> UsersRole { get; set; }
+        public DbSet<Warehouse> Warehouse { get; set; }
+        public DbSet<WarehouseBook> WarehouseBook { get; set; }
+        public DbSet<Wishlist> Wishlist { get; set; }
+        public DbSet<WishlistUser> WishlistUser { get; set; }
+        public DbSet<WishlistBook> WishlistBook { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,44 +1,61 @@
+using BooksShop.Classes.Common;
+using BooksShop.Help;
+using BooksShop.Interfaces;
+using BooksShop.Interfaces.Series;
+using BooksShop.Repositories;
+using BooksShop.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRazorPages();
+builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
+builder.Services.AddDbContext<DbConnect>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookService, BookService>();
+
+builder.Services.AddScoped<ISeriesService, SeriesService>();
+builder.Services.AddScoped<ISeriesRepository, SeriesRepository>();
+
+builder.Services.AddAutoMapper(typeof(Mapping));
+
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+builder.Services.AddSwaggerGen(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Курлык",
+        Description = "Полное руководство для использования запросов находящихся в проекте"
+    });
+    c.SwaggerDoc("v2", new OpenApiInfo
+    {
+        Version = "v2",
+        Title = "Руководство для использования запросов",
+        Description = "Полное руководство для использования запросов находящихся в проекте"
+    });
+});
+var app = builder.Build(); 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
-
+app.UseDeveloperExceptionPage();
+app.UseStatusCodePages();
+app.UseMvcWithDefaultRoute();
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Курлык");
+    c.SwaggerEndpoint("/swagger/v2/swagger.json", "Запросы POST");
+});
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching", "52"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
+app.UseRouting();
+app.UseAuthorization();
+app.MapRazorPages();
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
