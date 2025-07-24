@@ -1,5 +1,6 @@
 ﻿using BooksShop.Classes.Common;
 using BooksShop.Interfaces;
+using BooksShop.Interfaces.Series;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;

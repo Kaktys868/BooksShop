@@ -1,4 +1,6 @@
-﻿namespace BooksShop.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BooksShop.Models
 {
     public class Book
     {
@@ -7,8 +9,14 @@
         public DateOnly BookDateDesign { get; set; }
         public int BookCost { get; set; }
         public int BookSeries { get; set; }
-        public int BookGenre { get; set; }
         public int BookPublisher { get; set; }
+
+        [NotMapped]
+        public string SeriesName { get; set; }
+        [NotMapped]
+        public string PublisherName { get; set; }
+        [NotMapped]
+        public string GenreName { get; set; }
 
         public ICollection<WishlistBook> WishlistBooks { get; set; }
             = new List<WishlistBook>();

@@ -1,4 +1,6 @@
-﻿namespace BooksShop.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BooksShop.Models
 {
     public class Warehouse
     {
@@ -6,6 +8,9 @@
         public int WarehouseBooksQuantity { get; set; }
         public string WarehouseName { get; set; }
         public int WarehouseCityId { get; set; }
+
+        [NotMapped]
+        public string CityName { get; set; }
 
         public ICollection<Admission> Admissions { get; set; }
             = new List<Admission>();

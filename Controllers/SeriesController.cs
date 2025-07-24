@@ -8,7 +8,7 @@ using Microsoft.VisualBasic;
 namespace BooksShop.Controllers
 {
     [Route("api/SeriesController")]
-    [ApiExplorerSettings(GroupName = "v2")]
+    [ApiExplorerSettings(GroupName = "v15")]
     public class SeriesController : ControllerBase
     {
         private readonly ISeriesService _seriesService;
@@ -37,7 +37,7 @@ namespace BooksShop.Controllers
         public async Task<ActionResult> AddSeries([FromBody] CreateSeriesDto seriesDto)
         {
             await _seriesService.AddSeriesAsync(seriesDto);
-            return CreatedAtAction(nameof(GetSeries), new { id = seriesDto.SeriesId }, seriesDto);
+            return CreatedAtAction(nameof(GetSeries), seriesDto);
         }
 
         [HttpPut("{id}")]

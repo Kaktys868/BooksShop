@@ -1,4 +1,6 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using BooksShop.Classes.Common;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BooksShop.Models
 {
@@ -7,8 +9,7 @@ namespace BooksShop.Models
         public int AuthorId { get; set; }
         public string AuthorFIO { get; set; }
         public DateOnly AuthorDateOfBorn { get; set; }
-        public DateOnly AuthorDateOfDeath { get; set; }
-            = new DateOnly(0001,01,01);
+        public DateOnly? AuthorDateOfDeath { get; set; } = null;
 
         public ICollection<AuthorBook> AuthorBooks { get; set; }
            = new List<AuthorBook>();

@@ -1,12 +1,11 @@
 ﻿using BooksShop.Classes.Common;
-using BooksShop.Interfaces.Series;
+using BooksShop.Interfaces.Book;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace BooksShop.Repositories
 {
-    public class BookRepository : Interfaces.Series.IBookRepository
+    public class BookRepository : IBookRepository
     {
         private readonly DbConnect _context;
 
@@ -18,25 +17,36 @@ namespace BooksShop.Repositories
         public async Task<Book> GetByIdAsync(int id)
         {
             return await _context.Book
-                .Include(b => b.Series)
-                .Include(b => b.Publishers)
-                .Include(b => b.AuthorBooks)
-                    .ThenInclude(ab => ab.Author)
-                .Include(b => b.GenreBooks)
-                    .ThenInclude(gb => gb.Genre)
+                .Select(b => new Book
+                {
+                    BookId = b.BookId,
+                    BookName = b.BookName,
+                    BookDateDesign = b.BookDateDesign,
+                    BookCost = b.BookCost,
+                    SeriesName = b.Series.SeriesName,
+                    PublisherName = b.Publishers.PublisherName,
+                    GenreName = b.GenreBooks
+                    .Select(gb => gb.Genre.GenreName)
+                    .FirstOrDefault()
+                })
                 .FirstOrDefaultAsync(b => b.BookId == id);
         }
-
         public async Task<IEnumerable<Book>> GetAllAsync()
         {
             return await _context.Book
-                .Include(b => b.Series)
-                .Include(b => b.Publishers)
-                .Include(b => b.AuthorBooks)
-                    .ThenInclude(ab => ab.Author)
-                .Include(b => b.GenreBooks)
-                    .ThenInclude(gb => gb.Genre)
-                .ToListAsync();
+                .Select(b => new Book
+                {
+                    BookId = b.BookId,
+                    BookName = b.BookName,
+                    BookDateDesign = b.BookDateDesign,
+                    BookCost = b.BookCost,
+                    SeriesName = b.Series.SeriesName,
+                    PublisherName = b.Publishers.PublisherName,
+                    GenreName = b.GenreBooks
+                    .Select(gb => gb.Genre.GenreName)
+                    .FirstOrDefault()
+                })
+        .ToListAsync();
         }
 
         public async Task AddAsync(Book book)

@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
+using BooksShop.Classes.Common;
 using BooksShop.DTO;
+using BooksShop.Interfaces.Book;
 using BooksShop.Interfaces.Series;
 using BooksShop.Models;
+using BooksShop.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace BooksShop.Services
 {
@@ -22,7 +26,7 @@ namespace BooksShop.Services
             return _mapper.Map<BookDto>(book);
         }
 
-        public async Task<IEnumerable<BookDto>> GetAllBooksAsync()
+        public async Task<IEnumerable<BookDto>> GetAllBookAsync()
         {
             var books = await _bookRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<BookDto>>(books);
@@ -36,6 +40,7 @@ namespace BooksShop.Services
 
         public async Task UpdateBookAsync(int id, CreateBookDto bookDto)
         {
+
             var book = await _bookRepository.GetByIdAsync(id);
             _mapper.Map(bookDto, book);
             await _bookRepository.UpdateAsync(book);

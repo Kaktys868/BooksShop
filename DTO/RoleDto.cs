@@ -1,0 +1,12 @@
+﻿namespace BooksShop.DTO
+{
+    public class RoleDto
+    {
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+    }
+    public class CreateRoleDto
+    {
+        public string RoleName { get; set; }
+    }
+}

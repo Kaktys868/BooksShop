@@ -1,4 +1,5 @@
 ﻿using BooksShop.DTO;
+using BooksShop.Interfaces.Book;
 using BooksShop.Interfaces.Series;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
@@ -6,7 +7,7 @@ using Microsoft.VisualBasic;
 namespace BooksShop.Controllers
 {
     [Route("api/BookController")]
-    [ApiExplorerSettings(GroupName = "v1")]
+    [ApiExplorerSettings(GroupName = "v4")]
     public class BookController : ControllerBase
     {
         private readonly IBookService _bookService;
@@ -17,9 +18,9 @@ namespace BooksShop.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BookDto>>> GetAllBooks()
+        public async Task<ActionResult<IEnumerable<BookDto>>> GetAllBook()
         {
-            var books = await _bookService.GetAllBooksAsync();
+            var books = await _bookService.GetAllBookAsync();
             return Ok(books);
         }
 
@@ -35,7 +36,7 @@ namespace BooksShop.Controllers
         public async Task<ActionResult> AddBook([FromBody] CreateBookDto bookDto)
         {
             await _bookService.AddBookAsync(bookDto);
-            return CreatedAtAction(nameof(GetBook), new { id = bookDto.BookId }, bookDto);
+            return CreatedAtAction(nameof(GetBook), bookDto);
         }
 
         [HttpPut("{id}")]

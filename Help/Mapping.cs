@@ -8,33 +8,72 @@ namespace BooksShop.Help
     {
         public Mapping()
         {
+            //Admission
+            CreateMap<CreateAdmissionDto, Admission>();
+            CreateMap<Admission, AdmissionDto>();
+            //Author
+            CreateMap<CreateAuthorDto, Author>();
+            CreateMap<Author, AuthorDto>();
+            //AuthorBook
+            CreateMap<CreateAuthorBookDto, AuthorBook>();
+            CreateMap<AuthorBook, AuthorBookDto>();
             //Book
-            CreateMap<CreateBookDto, Book>()
-                .ForMember(dest => dest.BookName, opt => opt.MapFrom(src => src.BookName))
-                .ForMember(dest => dest.BookDateDesign, opt => opt.MapFrom(src => src.BookDateDesign))
-                .ForMember(dest => dest.BookCost, opt => opt.MapFrom(src => src.BookCost))
-                .ForMember(dest => dest.BookSeries, opt => opt.MapFrom(src => src.BookSeries))
-                .ForMember(dest => dest.BookGenre, opt => opt.MapFrom(src => src.BookGenre))
-                .ForMember(dest => dest.BookPublisher, opt => opt.MapFrom(src => src.BookPublisher));
-
-            CreateMap<Book, BookDto>()
-                .ForMember(dest => dest.BookId, opt => opt.MapFrom(src => src.BookId))
-                .ForMember(dest => dest.BookName, opt => opt.MapFrom(src => src.BookName))
-                .ForMember(dest => dest.BookDateDesign, opt => opt.MapFrom(src => src.BookDateDesign))
-                .ForMember(dest => dest.BookCost, opt => opt.MapFrom(src => src.BookCost))
-                .ForMember(dest => dest.BookSeries, opt => opt.MapFrom(src => src.Series.SeriesId))
-                .ForMember(dest => dest.BookGenre, opt => opt.MapFrom(src => src.GenreBooks.FirstOrDefault().Genre.GenreId))
-                .ForMember(dest => dest.BookPublisher, opt => opt.MapFrom(src => src.Publishers.PublisherId));
-
+            CreateMap<CreateBookDto, Book>();
+            CreateMap<Book, BookDto>();
+            //Cart
+            CreateMap<CreateCartDto, Cart>();
+            CreateMap<Cart, CartDto>();
+            //CartBook
+            CreateMap<CreateCartBookDto, CartBook>();
+            CreateMap<CartBook, CartBookDto>();
+            //City
+            CreateMap<CreateCityDto, City>();
+            CreateMap<City, CityDto>();
+            //Delivery
+            CreateMap<CreateDeliveryDto, Delivery>();
+            CreateMap<Delivery, DeliveryDto>();
+            //Genre
+            CreateMap<CreateGenreDto, Genre>();
+            CreateMap<Genre, GenreDto>();
+            //GenreBook
+            CreateMap<CreateGenreBookDto, GenreBook>();
+            CreateMap<GenreBook, GenreBookDto>();
+            //Order
+            CreateMap<CreateOrderDto, Order>();
+            CreateMap<Order, OrderDto>();
+            //Publisher
+            CreateMap<CreatePublisherDto, Publisher>();
+            CreateMap<Publisher, PublisherDto>();
+            //Review
+            CreateMap<CreateReviewDto, Review>();
+            CreateMap<Review, ReviewDto>();
+            //Role
+            CreateMap<CreateRoleDto, Role>();
+            CreateMap<Role, RoleDto>();
             //Series
-            CreateMap<CreateSeriesDto, Series>()
-                .ForMember(dest => dest.SeriesName, opt => opt.MapFrom(src => src.SeriesName))
-                .ForMember(dest => dest.SeriesDescription, opt => opt.MapFrom(src => src.SeriesDescription));
-
-            CreateMap<Series, SeriesDto>()
-                .ForMember(dest => dest.SeriesName, opt => opt.MapFrom(src => src.SeriesName))
-                .ForMember(dest => dest.SeriesDescription, opt => opt.MapFrom(src => src.SeriesDescription));
-
+            CreateMap<CreateSeriesDto, Series>();
+            CreateMap<Series, SeriesDto>();
+            //User
+            CreateMap<CreateUserDto, User>();
+            CreateMap<User, UserDto>();
+            //UserRole
+            CreateMap<CreateUserRoleDto, UserRole>();
+            CreateMap<UserRole, UserRoleDto>();
+            //Warehouse
+            CreateMap<CreateWarehouseDto, Warehouse>();
+            CreateMap<Warehouse, WarehouseDto>();
+            //WarehouseBook
+            CreateMap<CreateWarehouseBookDto, WarehouseBook>();
+            CreateMap<WarehouseBook, WarehouseBookDto>();
+            //Wishlist
+            CreateMap<CreateWishlistDto, Wishlist>();
+            CreateMap<Wishlist, WishlistDto>();
+            //WishlistBook
+            CreateMap<CreateWishlistBookDto, WishlistBook>();
+            CreateMap<WishlistBook, WishlistBookDto>();
+            //WishlistUser
+            CreateMap<CreateWishlistUserDto, WishlistUser>();
+            CreateMap<WishlistUser, WishlistUserDto>();
         }
     }
 }

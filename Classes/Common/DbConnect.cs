@@ -1,6 +1,7 @@
 ﻿using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Net;
 
 namespace BooksShop.Classes.Common
@@ -110,7 +111,7 @@ namespace BooksShop.Classes.Common
             modelBuilder.Entity<Publisher>()
                 .HasMany(p=>p.Books)
                 .WithOne(p=>p.Publishers)
-                .HasForeignKey(s=>s.BookSeries);
+                .HasForeignKey(s=>s.BookPublisher);
             modelBuilder.Entity<Book>()
                 .HasMany(p => p.Admissions)
                 .WithOne(p => p.Book)

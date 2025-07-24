@@ -1,6 +1,4 @@
-﻿using BooksShop.Models;
-
-namespace BooksShop.Interfaces
+﻿namespace BooksShop.Interfaces.Series
 {
     public interface ISeriesRepository
     {

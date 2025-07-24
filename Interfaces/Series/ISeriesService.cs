@@ -1,6 +1,6 @@
 ﻿using BooksShop.DTO;
 
-namespace BooksShop.Interfaces
+namespace BooksShop.Interfaces.Series
 {
     public interface ISeriesService
     {
