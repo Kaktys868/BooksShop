@@ -1,4 +1,6 @@
-﻿namespace BooksShop.DTO
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BooksShop.DTO
 {
     public class UserDto
     {
@@ -7,6 +9,8 @@
         public string UserPassword { get; set; }
         public string UserFIO { get; set; }
         public string UserPhoneNumber { get; set; }
+        [NotMapped]
+        public string RoleName { get; set; }
     }
     public class CreateUserDto
     {

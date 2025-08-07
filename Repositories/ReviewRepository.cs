@@ -17,12 +17,30 @@ namespace BooksShop.Repositories
         public async Task<Review> GetByIdAsync(int id)
         {
             return await _context.Review
+                .Select(p => new Review
+                {
+                    ReviewId = p.ReviewId,
+                    ReviewDate = p.ReviewDate,
+                    ReviewRating = p.ReviewRating,
+                    ReviewText = p.ReviewText,
+                    UserName = p.User.UserFIO,
+                    BookName = p.Book.BookName
+                })
                 .FirstOrDefaultAsync(b => b.ReviewId == id);
         }
 
         public async Task<IEnumerable<Review>> GetAllAsync()
         {
             return await _context.Review
+                .Select(p => new Review
+                {
+                    ReviewId = p.ReviewId,
+                    ReviewDate = p.ReviewDate,
+                    ReviewRating = p.ReviewRating,
+                    ReviewText = p.ReviewText,
+                    UserName = p.User.UserFIO,
+                    BookName = p.Book.BookName
+                })
                 .ToListAsync();
         }
 

@@ -17,11 +17,29 @@ namespace BooksShop.Repositories
         public async Task<User> GetByIdAsync(int id)
         {
             return await _context.User
+                 .Select(u => new User
+                 {
+                     UserId = u.UserId,
+                     UserFIO = u.UserFIO,
+                     UserLogin = u.UserLogin,
+                     UserPassword = u.UserPassword,
+                     UserPhoneNumber = u.UserPhoneNumber,
+                     RoleName = u.UserRoles.Select(ur => ur.Role.RoleName).FirstOrDefault()
+                 })
                 .FirstOrDefaultAsync(b => b.UserId == id);
         }
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _context.User
+                .Select(u => new User
+                {
+                    UserId = u.UserId,
+                    UserFIO = u.UserFIO,
+                    UserLogin = u.UserLogin,
+                    UserPassword = u.UserPassword,
+                    UserPhoneNumber = u.UserPhoneNumber,
+                    RoleName = u.UserRoles.Select(ur => ur.Role.RoleName).FirstOrDefault()
+                })
                 .ToListAsync();
         }
 

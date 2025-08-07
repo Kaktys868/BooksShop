@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Numerics;
 
 namespace BooksShop.Models
 {
@@ -10,6 +11,8 @@ namespace BooksShop.Models
         public string UserFIO { get; set; }
         public string UserPhoneNumber { get; set; }
 
+        [NotMapped]
+        public string RoleName { get; set; }
         public ICollection<UserRole> UserRoles { get; set; } 
             = new List<UserRole>();
         public ICollection<WishlistUser> WishlistUsers { get; set; }

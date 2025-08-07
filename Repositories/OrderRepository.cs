@@ -17,11 +17,29 @@ namespace BooksShop.Repositories
         public async Task<Order> GetByIdAsync(int id)
         {
             return await _context.Order
+                .Select(p => new Order
+                {
+                    OrderId = p.OrderId,
+                    OrderCreateDate = p.OrderCreateDate,
+                    OrderDeliveryDate = p.OrderDeliveryDate,
+                    OrderBookQuantity = p.OrderBookQuantity,
+                    UserName = p.User.UserFIO,
+                    BookName = p.Book.BookName
+                })
                 .FirstOrDefaultAsync(b => b.OrderId == id);
         }
         public async Task<IEnumerable<Order>> GetAllAsync()
         {
             return await _context.Order
+                .Select(p => new Order
+                {
+                    OrderId = p.OrderId,
+                    OrderCreateDate = p.OrderCreateDate,
+                    OrderDeliveryDate = p.OrderDeliveryDate,
+                    OrderBookQuantity = p.OrderBookQuantity,
+                    UserName = p.User.UserFIO,
+                    BookName = p.Book.BookName
+                })
                 .ToListAsync();
         }
 

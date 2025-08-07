@@ -19,6 +19,9 @@ using BooksShop.Interfaces.User;
 using BooksShop.Interfaces.UserRole;
 using BooksShop.Interfaces.Warehouse;
 using BooksShop.Interfaces.WarehouseBook;
+using BooksShop.Interfaces.Wishlist;
+using BooksShop.Interfaces.WishlistBook;
+using BooksShop.Interfaces.WishlistUser;
 using BooksShop.Models;
 using BooksShop.Repositories;
 using BooksShop.Services;
@@ -89,6 +92,15 @@ builder.Services.AddScoped<IWarehouseRepository, WarehouseRepository>();
 
 builder.Services.AddScoped<IWarehouseBookService, WarehouseBookService>();
 builder.Services.AddScoped<IWarehouseBookRepository, WarehouseBookRepository>();
+
+builder.Services.AddScoped<IWishlistService, WishlistService>();
+builder.Services.AddScoped<IWishlistRepository, WishlistRepository>();
+
+builder.Services.AddScoped<IWishlistBookService, WishlistBookService>();
+builder.Services.AddScoped<IWishlistBookRepository, WishlistBookRepository>();
+
+builder.Services.AddScoped<IWishlistUserService, WishlistUserService>();
+builder.Services.AddScoped<IWishlistUserRepository, WishlistUserRepository>();
 
 builder.Services.AddAutoMapper(typeof(Mapping));
 

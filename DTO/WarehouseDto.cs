@@ -7,7 +7,6 @@ namespace BooksShop.DTO
         public int WarehouseId { get; set; }
         public int WarehouseBooksQuantity { get; set; }
         public string WarehouseName { get; set; }
-        public int WarehouseCityId { get; set; }
 
         [NotMapped]
         public string CityName { get; set; }

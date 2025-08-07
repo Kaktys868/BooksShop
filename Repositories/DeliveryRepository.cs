@@ -17,11 +17,27 @@ namespace BooksShop.Repositories
         public async Task<Delivery> GetByIdAsync(int id)
         {
             return await _context.Delivery
+                .Select(p => new Delivery
+                {
+                    DeliveryId = p.DeliveryId,
+                    DeliveryQuantity = p.DeliveryQuantity,
+                    DeliveryDate = p.DeliveryDate,
+                    BookName = p.Book.BookName,
+                    WarehouseName = p.Warehouse.WarehouseName
+                })
                 .FirstOrDefaultAsync(b => b.DeliveryId == id);
         }
         public async Task<IEnumerable<Delivery>> GetAllAsync()
         {
             return await _context.Delivery
+                .Select(p => new Delivery
+                {
+                    DeliveryId = p.DeliveryId,
+                    DeliveryQuantity = p.DeliveryQuantity,
+                    DeliveryDate = p.DeliveryDate,
+                    BookName = p.Book.BookName,
+                    WarehouseName = p.Warehouse.WarehouseName
+                })
                 .ToListAsync();
         }
 

@@ -17,12 +17,24 @@ namespace BooksShop.Repositories
         public async Task<WarehouseBook> GetByIdAsync(int id)
         {
             return await _context.WarehouseBook
+                .Select(u => new WarehouseBook
+                {
+                    WarehouseBookId = u.WarehouseBookId,
+                    WarehouseName = u.Warehouse.WarehouseName,
+                    BookName = u.Book.BookName
+                })
                 .FirstOrDefaultAsync(b => b.WarehouseBookId == id);
         }
 
         public async Task<IEnumerable<WarehouseBook>> GetAllAsync()
         {
             return await _context.WarehouseBook
+                .Select(u => new WarehouseBook
+                {
+                    WarehouseBookId = u.WarehouseBookId,
+                    WarehouseName = u.Warehouse.WarehouseName,
+                    BookName = u.Book.BookName
+                })
                 .ToListAsync();
         }
 

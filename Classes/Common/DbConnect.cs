@@ -27,7 +27,7 @@ namespace BooksShop.Classes.Common
         public DbSet<Role> Role { get; set; }
         public DbSet<Series> Series { get; set; }
         public DbSet<User> User { get; set; }
-        public DbSet<UserRole> UsersRole { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
         public DbSet<Warehouse> Warehouse { get; set; }
         public DbSet<WarehouseBook> WarehouseBook { get; set; }
         public DbSet<Wishlist> Wishlist { get; set; }
