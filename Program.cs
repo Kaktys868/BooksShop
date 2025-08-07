@@ -1,18 +1,31 @@
 using BooksShop.Classes.Common;
 using BooksShop.Help;
+using BooksShop.Interfaces.Admission;
 using BooksShop.Interfaces.Author;
 using BooksShop.Interfaces.AuthorBook;
 using BooksShop.Interfaces.Book;
+using BooksShop.Interfaces.Cart;
 using BooksShop.Interfaces.CartBook;
+using BooksShop.Interfaces.City;
+using BooksShop.Interfaces.Delivery;
 using BooksShop.Interfaces.Genre;
 using BooksShop.Interfaces.GenreBook;
+using BooksShop.Interfaces.Order;
 using BooksShop.Interfaces.Publisher;
+using BooksShop.Interfaces.Review;
+using BooksShop.Interfaces.Role;
 using BooksShop.Interfaces.Series;
+using BooksShop.Interfaces.User;
+using BooksShop.Interfaces.UserRole;
+using BooksShop.Interfaces.Warehouse;
+using BooksShop.Interfaces.WarehouseBook;
 using BooksShop.Models;
 using BooksShop.Repositories;
 using BooksShop.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using WarehousesShop.Repositories;
+using WarehousesShop.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
@@ -20,26 +33,62 @@ builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
 builder.Services.AddDbContext<DbConnect>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<IAdmissionRepository, AdmissionRepositroy>();
+builder.Services.AddScoped<IAdmissionService, AdmissionService>();
+
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+
+builder.Services.AddScoped<IAuthorBookRepository, AuthorBookRepository>();
+builder.Services.AddScoped<IAuthorBookService, AuthorBookService>();
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
 
+builder.Services.AddScoped<ICartRepository, CartRepositroy>();
+builder.Services.AddScoped<ICartService, CartService>();
+
 builder.Services.AddScoped<ICartBookRepository, CartBookRepository>();
 builder.Services.AddScoped<ICartBookService, CartBookService>();
 
-builder.Services.AddScoped<ISeriesService, SeriesService>();
-builder.Services.AddScoped<ISeriesRepository, SeriesRepository>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<ICityService, CityService>();
 
-builder.Services.AddScoped<IPublisherService, PublisherService>();
-builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
+builder.Services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+builder.Services.AddScoped<IDeliveryService, DeliveryService>();
 
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 
 builder.Services.AddScoped<IGenreBookService, GenreBookService>();
 builder.Services.AddScoped<IGenreBookRepository, GenreBookRepository>();
+
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+builder.Services.AddScoped<IPublisherService, PublisherService>();
+builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
+
+builder.Services.AddScoped<IReviewService, ReviewService>();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+
+builder.Services.AddScoped<ISeriesService, SeriesService>();
+builder.Services.AddScoped<ISeriesRepository, SeriesRepository>();
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+
+builder.Services.AddScoped<IWarehouseService, WarehouseService>();
+builder.Services.AddScoped<IWarehouseRepository, WarehouseRepository>();
+
+builder.Services.AddScoped<IWarehouseBookService, WarehouseBookService>();
+builder.Services.AddScoped<IWarehouseBookRepository, WarehouseBookRepository>();
 
 builder.Services.AddAutoMapper(typeof(Mapping));
 

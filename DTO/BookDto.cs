@@ -15,6 +15,8 @@ namespace BooksShop.DTO
         public string PublisherName { get; set; }
         [NotMapped]
         public string GenreName { get; set; }
+        [NotMapped]
+        public string AuthorNames { get; set; }
     }
     
     public class CreateBookDto

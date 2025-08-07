@@ -1,12 +1,13 @@
 ﻿using BooksShop.Classes.Common;
 using BooksShop.Interfaces;
+using BooksShop.Interfaces.Publisher;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace BooksShop.Repositories
 {
-    public class PublisherRepository : Interfaces.Publisher.IPublisherRepository
+    public class PublisherRepository : IPublisherRepository
     {
         private readonly DbConnect _context;
 

@@ -8,6 +8,8 @@ namespace BooksShop.Models
         public int BookId { get; set; }
         [NotMapped]
         public string BookName { get; set; }
+        [NotMapped]
+        public string AuthorName { get; set; }
 
         public Author Author { get; set; }
         public Book Book { get; set; }

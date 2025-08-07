@@ -2,6 +2,7 @@
 using BooksShop.Interfaces.Book;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace BooksShop.Repositories
 {
@@ -13,7 +14,6 @@ namespace BooksShop.Repositories
         {
             _context = context;
         }
-
         public async Task<Book> GetByIdAsync(int id)
         {
             return await _context.Book
@@ -44,9 +44,12 @@ namespace BooksShop.Repositories
                     PublisherName = b.Publishers.PublisherName,
                     GenreName = b.GenreBooks
                     .Select(gb => gb.Genre.GenreName)
+                    .FirstOrDefault(),
+                    AuthorNames = b.AuthorBooks
+                    .Select(ab => ab.Author.AuthorFIO)
                     .FirstOrDefault()
                 })
-        .ToListAsync();
+                .ToListAsync();
         }
 
         public async Task AddAsync(Book book)

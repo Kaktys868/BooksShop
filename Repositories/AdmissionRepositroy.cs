@@ -17,19 +17,11 @@ namespace BooksShop.Repositories
         public async Task<Admission> GetByIdAsync(int id)
         {
             return await _context.Admission
-                .Select(b => new Admission
-                {
-                    AdmissionId = b.AdmissionId
-                })
                 .FirstOrDefaultAsync(b => b.AdmissionId == id);
         }
         public async Task<IEnumerable<Admission>> GetAllAsync()
         {
             return await _context.Admission
-                .Select(b => new Admission
-                {
-                    AdmissionId = b.AdmissionId
-                })
                 .ToListAsync();
         }
 

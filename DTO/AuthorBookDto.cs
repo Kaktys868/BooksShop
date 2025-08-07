@@ -9,6 +9,9 @@ namespace BooksShop.DTO
         public int BookId { get; set; }
         [NotMapped]
         public string BookName { get; set; }
+        [NotMapped]
+        public string AuthorName { get; set; }
+
     }
     public class CreateAuthorBookDto
     {

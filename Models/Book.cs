@@ -17,6 +17,8 @@ namespace BooksShop.Models
         public string PublisherName { get; set; }
         [NotMapped]
         public string GenreName { get; set; }
+        [NotMapped]
+        public string AuthorNames { get; set; }
 
         public ICollection<WishlistBook> WishlistBooks { get; set; }
             = new List<WishlistBook>();

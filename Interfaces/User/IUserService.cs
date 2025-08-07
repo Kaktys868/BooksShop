@@ -8,6 +8,6 @@ namespace BooksShop.Interfaces.User
         Task<IEnumerable<UserDto>> GetAllUserAsync();
         Task AddUserAsync(CreateUserDto userDto);
         Task UpdateUserAsync(int id, CreateUserDto userDto);
-        Task DeleteSeriesAsync(int id);
+        Task DeleteUserAsync(int id);
     }
 }

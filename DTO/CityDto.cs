@@ -1,4 +1,6 @@
-﻿namespace BooksShop.DTO
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BooksShop.DTO
 {
     public class CityDto
     {

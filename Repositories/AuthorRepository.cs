@@ -11,16 +11,7 @@ namespace BooksShop.Repositories
 
         public AuthorRepository(DbConnect context)
         {
-            _context = context; 
-            //RefreshAuthors();
-        }
-
-
-        public List<Author> _authorsCache = new List<Author>();
-        public async void RefreshAuthors()
-        {
-            _authorsCache = _context.Author
-                .ToList();
+            _context = context;
         }
 
         public async Task<Author> GetByIdAsync(int id)
