@@ -1,9 +1,9 @@
 ﻿using BooksShop.Classes.Common;
-using BooksShop.Interfaces.Warehouse;
+using BooksShop.Interfaces.IRepository;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace WarehousesShop.Repositories
+namespace BooksShop.Repositories
 {
     public class WarehouseRepository : IWarehouseRepository
     {

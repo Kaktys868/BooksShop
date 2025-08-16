@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using BooksShop.DTO;
-using BooksShop.Interfaces.Warehouse;
+using BooksShop.Interfaces.IRepository;
+using BooksShop.Interfaces.IService;
 
-namespace WarehousesShop.Services
+namespace BooksShop.Services
 {
     public class WarehouseService : IWarehouseService
     {

@@ -1,6 +1,6 @@
 ﻿using BooksShop.Classes.Common;
 using BooksShop.Interfaces;
-using BooksShop.Interfaces.Publisher;
+using BooksShop.Interfaces.IRepository;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;

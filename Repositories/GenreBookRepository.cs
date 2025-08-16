@@ -1,6 +1,5 @@
 ﻿using BooksShop.Classes.Common;
-using BooksShop.Interfaces.GenreBook;
-using BooksShop.Interfaces.Series;
+using BooksShop.Interfaces.IRepository;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
 

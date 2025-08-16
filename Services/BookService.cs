@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using BooksShop.Classes.Common;
 using BooksShop.DTO;
-using BooksShop.Interfaces.Book;
-using BooksShop.Interfaces.Series;
+using BooksShop.Interfaces.IRepository;
+using BooksShop.Interfaces.IService;
 using BooksShop.Models;
 using BooksShop.Repositories;
 using Microsoft.EntityFrameworkCore;

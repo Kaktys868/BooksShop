@@ -1,5 +1,5 @@
 ﻿using BooksShop.Classes.Common;
-using BooksShop.Interfaces.CartBook;
+using BooksShop.Interfaces.IRepository;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using BooksShop.DTO;
-using BooksShop.Interfaces.Genre;
-using BooksShop.Interfaces.Series;
+using BooksShop.Interfaces.IRepository;
+using BooksShop.Interfaces.IService;
+
 using BooksShop.Models;
 
 namespace BooksShop.Services

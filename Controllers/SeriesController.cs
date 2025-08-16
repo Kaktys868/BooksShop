@@ -1,6 +1,6 @@
 ﻿using BooksShop.DTO;
 using BooksShop.Interfaces;
-using BooksShop.Interfaces.Series;
+using BooksShop.Interfaces.IService;
 using BooksShop.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;

@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using BooksShop.DTO;
-using BooksShop.Interfaces.Publisher;
+using BooksShop.Interfaces.IRepository;
+using BooksShop.Interfaces.IService;
 using BooksShop.Models;
 
 namespace BooksShop.Services
 {
-    public class PublisherService : Interfaces.Publisher.IPublisherService
+    public class PublisherService : IPublisherService
     {
         private readonly IPublisherRepository _publisherRepository;
         private readonly IMapper _mapper;

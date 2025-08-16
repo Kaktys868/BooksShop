@@ -1,50 +1,56 @@
 ﻿using AutoMapper;
 using BooksShop.DTO;
-using BooksShop.Interfaces.Admission;
+using BooksShop.Interfaces.IRepository;
+using BooksShop.Interfaces.IService;
 using BooksShop.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BooksShop.Services
 {
     public class AdmissionService : IAdmissionService
     {
-        private readonly IAdmissionRepository _AdmissionRepository;
+        private readonly IAdmissionRepository _admissionRepository;
         private readonly IMapper _mapper;
 
-        public AdmissionService(IAdmissionRepository AdmissionRepository, IMapper mapper)
+        public AdmissionService(IAdmissionRepository admissionRepository, IMapper mapper)
         {
-            _AdmissionRepository = AdmissionRepository;
+            _admissionRepository = admissionRepository;
             _mapper = mapper;
         }
 
-        public async Task<AdmissionDto> GetAdmissionByIdAsync(int id)
+        public async Task<AdmissionDto> GetAdmissionByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var Admission = await _AdmissionRepository.GetByIdAsync(id);
-            return _mapper.Map<AdmissionDto>(Admission);
+            var admission = await _admissionRepository.GetByIdAsync(id, cancellationToken);
+            return _mapper.Map<AdmissionDto>(admission);
         }
 
-        public async Task<IEnumerable<AdmissionDto>> GetAllAdmissionAsync()
+        public async Task<IEnumerable<AdmissionDto>> GetAllAdmissionAsync(CancellationToken cancellationToken)
         {
-            var Admissions = await _AdmissionRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<AdmissionDto>>(Admissions);
+            var admissions = await _admissionRepository.GetAllAsync(cancellationToken);
+            return _mapper.Map<IEnumerable<AdmissionDto>>(admissions);
         }
 
-        public async Task AddAdmissionAsync(CreateAdmissionDto AdmissionDto)
+        public async Task AddAdmissionAsync(CreateAdmissionDto admissionDto, CancellationToken cancellationToken)
         {
-            var Admission = _mapper.Map<Admission>(AdmissionDto);
-            await _AdmissionRepository.AddAsync(Admission);
+            var admission = _mapper.Map<Admission>(admissionDto);
+            await _admissionRepository.AddAsync(admission, cancellationToken);
         }
 
-        public async Task UpdateAdmissionAsync(int id, CreateAdmissionDto AdmissionDto)
+        public async Task UpdateAdmissionAsync(int id, CreateAdmissionDto admissionDto, CancellationToken cancellationToken)
         {
-
-            var Admission = await _AdmissionRepository.GetByIdAsync(id);
-            _mapper.Map(AdmissionDto, Admission);
-            await _AdmissionRepository.UpdateAsync(Admission);
+            var admission = await _admissionRepository.GetByIdAsync(id, cancellationToken);
+            _mapper.Map(admissionDto, admission);
+            await _admissionRepository.UpdateAsync(admission, cancellationToken);
         }
 
-        public async Task DeleteAdmissionAsync(int id)
+        public async Task DeleteAdmissionAsync(int id, CancellationToken cancellationToken)
         {
-            await _AdmissionRepository.DeleteAsync(id);
+            await _admissionRepository.DeleteAsync(id, cancellationToken);
+        }
+
+        public async Task DeleteAdmissionAllAsync(CancellationToken cancellationToken)
+        {
+            await _admissionRepository.DeleteAllAsync(cancellationToken);
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using BooksShop.Classes.Common;
-using BooksShop.Interfaces.Cart;
+using BooksShop.Interfaces.IRepository;
 using BooksShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BooksShop.Repositories
 {
-    public class CartRepositroy : ICartRepository
+    public class CartRepository : ICartRepository
     {
         private readonly DbConnect _context;
 
-        public CartRepositroy(DbConnect context)
+        public CartRepository(DbConnect context)
         {
             _context = context;
         }

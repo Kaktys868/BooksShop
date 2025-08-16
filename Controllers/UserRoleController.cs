@@ -1,5 +1,5 @@
 ﻿using BooksShop.DTO;
-using BooksShop.Interfaces.UserRole;
+using BooksShop.Interfaces.IService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BooksShop.Controllers

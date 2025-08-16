@@ -1,6 +1,5 @@
 ﻿using BooksShop.DTO;
-using BooksShop.Interfaces.GenreBook;
-using BooksShop.Interfaces.Series;
+using BooksShop.Interfaces.IService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BooksShop.Controllers
