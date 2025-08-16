@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BooksShop</name>
+    </assembly>
+    <members>
+        <member name="T:BooksShop.Controllers.AdmissionController">
+            <summary>
+            Контроллер для работы с поступлениями книг
+            </summary>
+        </member>
+        <member name="M:BooksShop.Controllers.AdmissionController.#ctor(BooksShop.Interfaces.IService.IAdmissionService)">
+            <summary>
+            Конструктор контроллера поступлений
+            </summary>
+            <param name="admissionService">Сервис для работы с поступлениями</param>
+        </member>
+        <member name="M:BooksShop.Controllers.AdmissionController.GetAllAdmission(System.Threading.CancellationToken)">
+            <summary>
+            Получает список всех поступлений
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Список поступлений</returns>
+        </member>
+        <member name="M:BooksShop.Controllers.AdmissionController.GetAdmission(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получает поступление по идентификатору
+            </summary>
+            <param name="id">Идентификатор поступления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Поступление с указанным идентификатором</returns>
+            <response code="200">Поступление найдено</response>
+            <response code="404">Поступление не найдено</response>
+        </member>
+        <member name="M:BooksShop.Controllers.AdmissionController.AddAdmission(BooksShop.DTO.CreateAdmissionDto,System.Threading.CancellationToken)">
+            <summary>
+            Добавляет новое поступление
+            </summary>
+            <param name="admissionDto">Данные нового поступления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Созданное поступление</returns>
+            <response code="201">Поступление успешно создано</response>
+        </member>
+        <member name="M:BooksShop.Controllers.AdmissionController.UpdateAdmission(System.Int32,BooksShop.DTO.CreateAdmissionDto,System.Threading.CancellationToken)">
+            <summary>
+            Обновляет существующее поступление
+            </summary>
+            <param name="id">Идентификатор поступления</param>
+            <param name="admissionDto">Обновленные данные поступления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Результат операции</returns>
+            <response code="204">Поступление успешно обновлено</response>
+        </member>
+        <member name="M:BooksShop.Controllers.AdmissionController.DeleteAdmissionAll(System.Threading.CancellationToken)">
+            <summary>
+            Удаляет все поступления
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Результат операции</returns>
+            <response code="204">Все поступления успешно удалены</response>
+        </member>
+        <member name="M:BooksShop.Controllers.AdmissionController.DeleteAdmission(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Удаляет поступление по идентификатору
+            </summary>
+            <param name="id">Идентификатор поступления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Результат операции</returns>
+            <response code="204">Поступление успешно удалено</response>
+        </member>
+        <member name="T:BooksShop.Controllers.AuthorBookController">
+            <summary>
+            Контроллер для работы с связями авторов и книг
+            </summary>
+        </member>
+        <member name="M:BooksShop.Controllers.AuthorBookController.#ctor(BooksShop.Interfaces.IService.IAuthorBookService)">
+            <summary>
+            Конструктор контроллера связей авторов и книг
+            </summary>
+            <param name="AuthorBookService">Сервис для работы со связями авторов и книг</param>
+        </member>
+        <member name="M:BooksShop.Controllers.AuthorBookController.GetAllAuthorBook(System.Threading.CancellationToken)">
+            <summary>
+            Получает список всех связей авторов и книг
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Список связей авторов и книг</returns>
+        </member>
+        <member name="M:BooksShop.Controllers.AuthorBookController.GetAuthorBook(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получает связь автора и книги по идентификатору
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Связь автора и книги с указанным идентификатором</returns>
+            <response code="200">Связь найдена</response>
+            <response code="404">Связь не найдена</response>
+        </member>
+        <member name="M:BooksShop.Controllers.AuthorBookController.AddAuthorBook(BooksShop.DTO.CreateAuthorBookDto,System.Threading.CancellationToken)">
+            <summary>
+            Добавляет новую связь автора и книги
+            </summary>
+            <param name="AuthorBookDto">Данные новой связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Созданная связь</returns>
+            <response code="201">Связь успешно создана</response>
+        </member>
+        <member name="M:BooksShop.Controllers.AuthorBookController.UpdateAuthorBook(System.Int32,BooksShop.DTO.CreateAuthorBookDto,System.Threading.CancellationToken)">
+            <summary>
+            Обновляет существующую связь автора и книги
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="AuthorBookDto">Обновленные данные связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Результат операции</returns>
+            <response code="204">Связь успешно обновлена</response>
+        </member>
+        <member name="M:BooksShop.Controllers.AuthorBookController.DeleteAllAuthorBook(System.Threading.CancellationToken)">
+            <summary>
+            Удаляет все связи авторов и книг
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Результат операции</returns>
+            <response code="204">Все связи успешно удалены</response>
+        </member>
+        <member name="M:BooksShop.Controllers.AuthorBookController.DeleteAuthorBook(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Удаляет связь автора и книги по идентификатору
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Результат операции</returns>
+            <response code="204">Связь успешно удалена</response>
+        </member>
+        <member name="T:BooksShop.Repositories.AdmissionRepository">
+            <summary>
+            Репозиторий для работы с поступлениями книг
+            </summary>
+        </member>
+        <member name="M:BooksShop.Repositories.AdmissionRepository.#ctor(BooksShop.Classes.Common.DbConnect)">
+            <summary>
+            Конструктор репозитория поступлений
+            </summary>
+            <param name="context">Контекст базы данных</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AdmissionRepository.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получает поступление по идентификатору
+            </summary>
+            <param name="id">Идентификатор поступления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Поступление с указанным идентификатором</returns>
+        </member>
+        <member name="M:BooksShop.Repositories.AdmissionRepository.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            Получает все поступления
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Список всех поступлений</returns>
+        </member>
+        <member name="M:BooksShop.Repositories.AdmissionRepository.AddAsync(BooksShop.Models.Admission,System.Threading.CancellationToken)">
+            <summary>
+            Добавляет новое поступление
+            </summary>
+            <param name="admission">Данные поступления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AdmissionRepository.UpdateAsync(BooksShop.Models.Admission,System.Threading.CancellationToken)">
+            <summary>
+            Обновляет существующее поступление
+            </summary>
+            <param name="admission">Данные поступления для обновления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AdmissionRepository.DeleteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Удаляет поступление по идентификатору
+            </summary>
+            <param name="id">Идентификатор поступления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AdmissionRepository.DeleteAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            Удаляет все поступления
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AdmissionRepository.ExistsAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Проверяет существование поступления по идентификатору
+            </summary>
+            <param name="id">Идентификатор поступления</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>True, если поступление существует, иначе False</returns>
+        </member>
+        <member name="T:BooksShop.Repositories.AuthorBookRepository">
+            <summary>
+            Репозиторий для работы со связями авторов и книг
+            </summary>
+        </member>
+        <member name="M:BooksShop.Repositories.AuthorBookRepository.#ctor(BooksShop.Classes.Common.DbConnect)">
+            <summary>
+            Конструктор репозитория связей авторов и книг
+            </summary>
+            <param name="context">Контекст базы данных</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AuthorBookRepository.GetByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получает связь автора и книги по идентификатору
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Связь автора и книги</returns>
+        </member>
+        <member name="M:BooksShop.Repositories.AuthorBookRepository.GetAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            Получает все связи авторов и книг
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Список всех связей авторов и книг</returns>
+        </member>
+        <member name="M:BooksShop.Repositories.AuthorBookRepository.AddAsync(BooksShop.Models.AuthorBook,System.Threading.CancellationToken)">
+            <summary>
+            Добавляет новую связь автора и книги
+            </summary>
+            <param name="authorBook">Данные связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AuthorBookRepository.UpdateAsync(BooksShop.Models.AuthorBook,System.Threading.CancellationToken)">
+            <summary>
+            Обновляет существующую связь автора и книги
+            </summary>
+            <param name="authorBook">Обновленные данные связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AuthorBookRepository.DeleteAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Удаляет связь автора и книги по идентификатору
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AuthorBookRepository.DeleteAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            Удаляет все связи авторов и книг
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Repositories.AuthorBookRepository.ExistsAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Проверяет существование связи по идентификатору
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>True, если связь существует, иначе False</returns>
+        </member>
+        <member name="T:BooksShop.Services.AuthorBookService">
+            <summary>
+            Сервис для работы со связями авторов и книг
+            </summary>
+        </member>
+        <member name="M:BooksShop.Services.AuthorBookService.#ctor(BooksShop.Interfaces.IRepository.IAuthorBookRepository,AutoMapper.IMapper)">
+            <summary>
+            Конструктор сервиса связей авторов и книг
+            </summary>
+            <param name="AuthorBookRepository">Репозиторий для работы со связями авторов и книг</param>
+            <param name="mapper">Автомаппер для преобразования DTO</param>
+        </member>
+        <member name="M:BooksShop.Services.AuthorBookService.GetAuthorBookByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получает связь автора и книги по идентификатору
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>DTO связи автора и книги</returns>
+        </member>
+        <member name="M:BooksShop.Services.AuthorBookService.GetAllAuthorBookAsync(System.Threading.CancellationToken)">
+            <summary>
+            Получает все связи авторов и книг
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns>Коллекция DTO связей авторов и книг</returns>
+        </member>
+        <member name="M:BooksShop.Services.AuthorBookService.AddAuthorBookAsync(BooksShop.DTO.CreateAuthorBookDto,System.Threading.CancellationToken)">
+            <summary>
+            Добавляет новую связь автора и книги
+            </summary>
+            <param name="AuthorBookDto">DTO для создания связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Services.AuthorBookService.UpdateAuthorBookAsync(System.Int32,BooksShop.DTO.CreateAuthorBookDto,System.Threading.CancellationToken)">
+            <summary>
+            Обновляет существующую связь автора и книги
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="AuthorBookDto">DTO с обновленными данными</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Services.AuthorBookService.DeleteAuthorBookAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Удаляет связь автора и книги по идентификатору
+            </summary>
+            <param name="id">Идентификатор связи</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+        <member name="M:BooksShop.Services.AuthorBookService.DeleteAuthorBookAllAsync(System.Threading.CancellationToken)">
+            <summary>
+            Удаляет все связи авторов и книг
+            </summary>
+            <param name="cancellationToken">Токен отмены операции</param>
+        </member>
+    </members>
+</doc>
